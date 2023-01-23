@@ -10,7 +10,9 @@ const listaDeTecla = document.querySelectorAll('.tecla')
 
 cont=0
 while (cont < listaDeTecla.length) {
-    listaDeTecla[cont].onclick =  () => playSound('#som_tecla_pom')
-    
+    const tecla = listaDeTecla[cont]
+    const instrumento = tecla.classList[1]
+    const instrumentoValue = `#som_${instrumento}`
+    tecla.onclick =  () => playSound(instrumentoValue)
     cont++
 }
