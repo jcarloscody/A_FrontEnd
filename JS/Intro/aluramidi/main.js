@@ -14,5 +14,13 @@ while (cont < listaDeTecla.length) {
     const instrumento = tecla.classList[1]
     const instrumentoValue = `#som_${instrumento}`
     tecla.onclick =  () => playSound(instrumentoValue)
+    tecla.onkeydown = function (evento) {
+        if (evento.code=="Space" || evento.code=="Enter") {
+            tecla.classList.add('ativa')
+            tecla.onclick =  () => playSound(instrumentoValue)
+        }
+    }
+    tecla.onkeyup = ()=> tecla.classList.remove('ativa')
     cont++
 }
+
