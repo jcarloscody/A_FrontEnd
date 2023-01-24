@@ -2,7 +2,11 @@ document.querySelector('.tecla_pom').onclick = playSound
 
 
 function playSound(id) {
-    document.querySelector(id).play()
+   const audio = document.querySelector(id)
+    if (audio.localName=== "audio") {
+        console.log(audio.localName)
+        audio.play()
+    }
 }
 
 
@@ -15,9 +19,9 @@ while (cont < listaDeTecla.length) {
     const instrumentoValue = `#som_${instrumento}`
     tecla.onclick =  () => playSound(instrumentoValue)
     tecla.onkeydown = function (evento) {
-        if (evento.code=="Space" || evento.code=="Enter") {
+        if (evento.code==="Space" || evento.code==="KeyA") {
             tecla.classList.add('ativa')
-            tecla.onclick =  () => playSound(instrumentoValue)
+            playSound(instrumentoValue)
         }
     }
     tecla.onkeyup = ()=> tecla.classList.remove('ativa')
